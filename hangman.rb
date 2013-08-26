@@ -22,7 +22,7 @@ while guessed_letters != random_word
   puts "Guess a letter, note that if you guess more than one letter and your wrong, you will lose!"
   puts player_guess
    if player_guess.length > 1
-    if player_guess == met
+    if player_guess == random_words
       puts "You did it, I never should have doubted you.  You guessed #{random_word} in #{guess_count}"
       break
     else
