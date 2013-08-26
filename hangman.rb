@@ -1,17 +1,36 @@
-
 # As a gamemaster
 # I want to choose a word at random
 # So that the game isn't predictable
 
+#should rechange random_word to a more descriptive word
 random_words = ["pants", "cake", "andrew", "party", "when"]
-
-random_word = random_words.rand
-
+random_word = random_words.sample
+#rand doesn't sample dummy
 hidden_word =  "_" * random_word.length
 
-#should rechange random_word to a more descriptive word
-
+guessed_letters = []
 guess_count = 9
+
+puts "Yo dog, I heard you like Hangman.  Fancy a game?"
+player_guess = gets.chomp
+
+while guessed_letters != random_word
+  puts hidden_word
+  puts "The word is  #{hidden_word}.  Not very helpful is it."
+#rename guess count!
+  puts "You have #{guess_count} guesses"
+  puts "Guess a letter, note that if you guess more than one letter and your wrong, you will lose!"
+  puts player_guess
+   if player_guess.length > 1
+    if player_guess == met
+      puts "You did it, I never should have doubted you.  You guessed #{random_word} in #{guess_count}"
+      break
+    else
+      puts "Oh no, the point is not to HANG the MAN.  The right answer was #{random_word}"
+      break
+    end
+  end
+end
 
 # As a player
 # I want to know how much of the word I've guessed
