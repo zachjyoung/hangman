@@ -3,7 +3,8 @@
 # So that the game isn't predictable
 
 #should rechange random_word to a more descriptive word
-random_words = ["pants", "cake", "andrew", "party", "when"]
+random_words = ["pants", "cake", "andrew", "party", "when","butt-stallion"]
+#added butt_stallion
 random_word = random_words.sample
 #rand doesn't sample dummy
 hidden_word =  "_" * random_word.length
@@ -12,15 +13,13 @@ guessed_letters = []
 guess_count = 9
 
 puts "Yo dog, I heard you like Hangman.  Fancy a game?"
-player_guess = gets.chomp
 
 while guessed_letters != random_word
-  puts hidden_word
   puts "The word is  #{hidden_word}.  Not very helpful is it."
 #rename guess count!
   puts "You have #{guess_count} guesses"
-  puts "Guess a letter, note that if you guess more than one letter and your wrong, you will lose!"
-  puts player_guess
+  puts "Guess a letter, note that if you guess more than one letter and you're wrong, you will lose!"
+  player_guess = gets.chomp
    if player_guess.length > 1
     if player_guess == met
       puts "You did it, I never should have doubted you.  You guessed #{random_word} in #{guess_count}"
