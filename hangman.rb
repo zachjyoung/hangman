@@ -17,41 +17,43 @@ play_game = gets.chomp
 if play_game == false
   exit 
 else
-while guessed_letters != random_word
-  puts "The word is  #{hidden_word}.  Not very helpful is it."
-#rename guess count!
-  puts "You have #{guess_count} guesses"
-  puts "Guess a letter, note that if you guess more than one letter and you're wrong, you will lose!"
-  player_guess = gets.chomp
-   if player_guess.length > 1
-    if player_guess == random_word
-      puts "You did it, I never should have doubted you.  You guessed #{random_word} in #{guess_count}"
-      break
-    else
-      puts "Oh no, the point is not to HANG the MAN.  The right answer was #{random_word}"
-      break
+  while guessed_letters != random_word
+  #change this, not very clear when you're trying to play
+    puts hidden_word
+    puts "letters guessed so far #{guessed_letters.join(",")}"
+  #rename guess count!
+    puts "You have #{guess_count} guesses"
+    puts "Guess a letter, note that if you guess more than one letter and you're wrong, you will lose!"
+    player_guess = gets.chomp
+    if player_guess.length > 1
+      if player_guess == random_word
+        puts "You did it, I never should have doubted you.  You guessed #{random_word.upcase} in #{guess_count}"
+        break
+      else
+        puts "Oh no, the point is not to HANG the MAN.  The right answer was #{random_word.upcase}"
+        break
+      end
+  elsif player_guess.length == 1
+      guessed_letters << player_guess
+      if random_word.include?(player_guess)
+        puts "#{player_guess} was found in the word, good job"
+        guess_count -=1
+      else
+        guess_count -=1
+        puts "Sorry no #{player_guess}'s, go fish."
+      end
     end
-#fix this loop!
-elsif player_guess.length == 1
-    guessed_letters << player_guess
-    if random_word.include?(player_guess)
-      puts "#{player_guess} was found in the word, good job"
-      guess_count -=1
-    else
-      guess_count -=1
-      puts "Sorry no #{player_guess}'s here."
-    end
-  end
-  if player_guess == hidden_word
-    puts"You did it, you guessed #{random_word} in #{guess_count} turns!"
-    break
-  elsif guess_count == 0
-      puts "Cool try bro, but #{random_word} was the word."
+    hidden_word = random_word.gsub(/[^"#{guessed_letters.join}"]/, "_")
+    if player_guess == hidden_word
+      puts "You did it, you guessed #{random_word.upcase} in #{guess_count} turns!"
       break
+    elsif guess_count == 0
+        puts "Cool try bro, but #{random_word.upcase} was the word."
+        break
+    end
+    puts "Would you like to play again?"
+    puts play_game
   end
-  puts "Would you like to play again?"
-  puts play_game
-end
 end
 
 
