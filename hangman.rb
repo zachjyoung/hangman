@@ -1,20 +1,18 @@
 #should rechange random_word to a more descriptive word
-random_words = ["pants", "cake", "andrew", "party", "when","butt-stallion"]
-#added butt_stallion
+random_words = ["pants", "cake", "andrew", "party", "when"]
 random_word = random_words.sample
-#rand doesn't sample dummy
 hidden_word =  "_" * random_word.length
 
 guessed_letters = []
 guess_count = 9
 
-play_game = false
+play_game = 
 
-puts "Yo dog, I heard you like Hangman.  Fancy a game?"
+puts "Yo dog, I heard you like Hangman.  Fancy a game? Answer (yes or no) "
 play_game = gets.chomp
 
 #nest the whole game in a loop
-if play_game == false
+if play_game.downcase == "no"
   exit 
 else
   while guessed_letters != random_word
@@ -48,12 +46,12 @@ else
       puts "You did it, you guessed #{random_word.upcase} in #{guess_count} turns!"
       break
     elsif guess_count == 0
-        puts "Cool try bro, but #{random_word.upcase} was the word."
-        break
+      puts "Cool try bro, but #{random_word.upcase} was the word."
+      break
     end
-    puts "Would you like to play again?"
-    puts play_game
   end
+  puts "Would you like to play again?"
+  puts play_game.downcase
 end
 
 
